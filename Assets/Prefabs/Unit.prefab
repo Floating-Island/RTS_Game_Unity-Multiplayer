@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2803482624529711787}
   - component: {fileID: -3355508217161194733}
+  - component: {fileID: 4811377375330671055}
   - component: {fileID: -5974846013767787479}
-  - component: {fileID: 8028989813296190474}
   - component: {fileID: 1613184995660580874}
+  - component: {fileID: 8028989813296190474}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -52,6 +53,40 @@ MonoBehaviour:
   visible: 0
   m_AssetId: 5ef795af277c9d5438ad1b1eaa8239e5
   hasSpawned: 0
+--- !u!114 &4811377375330671055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025136841884947699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f74aedd71d9a4f55b3ce499326d45fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  clientAuthority: 0
+  sendInterval: 0.05
+  syncPosition: 1
+  syncRotation: 1
+  syncScale: 0
+  interpolatePosition: 1
+  interpolateRotation: 1
+  interpolateScale: 0
+  bufferTimeMultiplier: 1
+  bufferSizeLimit: 64
+  catchupThreshold: 4
+  catchupMultiplier: 0.1
+  onlySyncOnChange: 1
+  bufferResetMultiplier: 5
+  positionSensitivity: 0.01
+  rotationSensitivity: 0.01
+  scaleSensitivity: 0.01
+  showGizmos: 0
+  showOverlay: 0
+  overlayColor: {r: 0, g: 0, b: 0, a: 0.5}
 --- !u!114 &-5974846013767787479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66,22 +101,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
---- !u!114 &8028989813296190474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9025136841884947699}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b660ac720132d1e47ba4ba570d90404b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  agent: {fileID: 1613184995660580874}
-  mainCamera: {fileID: 0}
 --- !u!195 &1613184995660580874
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -104,6 +123,22 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &8028989813296190474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025136841884947699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b660ac720132d1e47ba4ba570d90404b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  agent: {fileID: 1613184995660580874}
+  mainCamera: {fileID: 0}
 --- !u!1001 &2773767306064277852
 PrefabInstance:
   m_ObjectHideFlags: 0
