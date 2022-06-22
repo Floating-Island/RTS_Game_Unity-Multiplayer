@@ -8,11 +8,13 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private GameObject unitPrefab = null;
+    private GameObject spawnPoint = null;
 
     [Command]
     private void CmdSpawnUnit()
     {
-        GameObject unitInstance = Instantiate(unitPrefab, transform.position, transform.rotation);
+        Transform spawnPointTransform = spawnPoint.transform;
+        GameObject unitInstance = Instantiate(unitPrefab, spawnPointTransform.position, spawnPointTransform.rotation);
 
         NetworkServer.Spawn(unitInstance, connectionToClient);
     }
