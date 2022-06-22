@@ -80,7 +80,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  agent: {fileID: 0}
+  agent: {fileID: 1613184995660580874}
   mainCamera: {fileID: 0}
 --- !u!195 &1613184995660580874
 NavMeshAgent:
