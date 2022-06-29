@@ -24,7 +24,7 @@ public class UnitCommander : MonoBehaviour
 
             if(Physics.Raycast(godRay, out RaycastHit godTouch, Mathf.Infinity))
             {
-                UnitEvents unit = selectionHandler.currentSelectedUnit();
+                Unit unit = selectionHandler.currentSelectedUnit();
 
                 if(unit)
                 {

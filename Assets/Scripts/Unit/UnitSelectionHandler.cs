@@ -7,7 +7,7 @@ public class UnitSelectionHandler : MonoBehaviour
 {
     private Camera mainCamera;
 
-    private UnitEvents selectedUnit = null;
+    private Unit selectedUnit = null;
 
     [SerializeField]
     private LayerMask unitLayerMask = new LayerMask();
@@ -24,7 +24,7 @@ public class UnitSelectionHandler : MonoBehaviour
 
             if(Physics.Raycast(selectionRay, out RaycastHit selection, Mathf.Infinity, unitLayerMask))
             {
-                if(selection.collider.TryGetComponent<UnitEvents>(out UnitEvents unit))
+                if(selection.collider.TryGetComponent<Unit>(out Unit unit))
                 {
                     selectedUnit?.Deselect();
 
@@ -36,7 +36,7 @@ public class UnitSelectionHandler : MonoBehaviour
         }
     }
 
-    public UnitEvents currentSelectedUnit()
+    public Unit currentSelectedUnit()
     {
         return selectedUnit;
     }
