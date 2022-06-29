@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UnitEvents : NetworkBehaviour
+public class Unit : NetworkBehaviour
 {
     [SerializeField]
     private Pointed_Movement unitMovement = null;
