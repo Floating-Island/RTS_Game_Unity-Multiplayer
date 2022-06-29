@@ -11,4 +11,23 @@ public class UnitEvents : NetworkBehaviour
 
     [SerializeField]
     private UnityEvent onDeselected = null;
+
+
+    [Client]
+    public void Select()
+    {
+        if(hasAuthority)
+        {
+            onSelected?.Invoke();
+        }
+    }
+
+    [Client]
+    public void Deselect()
+    {
+        if(hasAuthority)
+        {
+            onDeselected?.Invoke();
+        }
+    }
 }
