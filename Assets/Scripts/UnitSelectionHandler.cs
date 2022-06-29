@@ -26,6 +26,8 @@ public class UnitSelectionHandler : MonoBehaviour
             {
                 if(selection.collider.TryGetComponent<UnitEvents>(out UnitEvents unit))
                 {
+                    selectedUnit?.Deselect();
+
                     selectedUnit = unit;
 
                     selectedUnit.Select();
