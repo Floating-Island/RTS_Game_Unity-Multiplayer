@@ -35,4 +35,9 @@ public class UnitSelectionHandler : MonoBehaviour
             }
         }
     }
+
+    public UnitEvents currentSelectedUnit()
+    {
+        return selectedUnit;
+    }
 }
