@@ -14,7 +14,7 @@ public class Pointed_Movement : NetworkBehaviour
     {
         float maxNavMeshDistance = 1f;
 
-        if(hasAuthority && NavMesh.SamplePosition(aPosition, out NavMeshHit aHit, maxNavMeshDistance, NavMesh.AllAreas))
+        if(NavMesh.SamplePosition(aPosition, out NavMeshHit aHit, maxNavMeshDistance, NavMesh.AllAreas))
         {
             agent.SetDestination(aHit.position);
         }
