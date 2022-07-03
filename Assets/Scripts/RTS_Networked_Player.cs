@@ -16,7 +16,10 @@ public class RTS_Networked_Player : NetworkBehaviour
 
     private void ServerHandleUnitSpawned(Unit unit)
     {
-        units.Add(unit);
+        if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
+        {
+            units.Add(unit);
+        }
     }
 
     public override void OnStopServer()
@@ -28,6 +31,9 @@ public class RTS_Networked_Player : NetworkBehaviour
 
     private void ServerHandleUnitDespawned(Unit unit)
     {
-        units.Remove(unit);
+        if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
+        {
+            units.Remove(unit);
+        }
     }
 }
