@@ -13,12 +13,23 @@ public class RTS_Networked_Player : NetworkBehaviour
         Unit.ServerOnUnitSpawned += ServerHandleUnitSpawned;
         Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
     }
-
+    
+    [Server]
     private void ServerHandleUnitSpawned(Unit unit)
     {
         if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
         {
             units.Add(unit);
+            AddToClientSide(unit);
+        }
+    }
+
+    [ClientRpc]
+    private void AddToClientSide(Unit aUnit)
+    {
+        if(hasAuthority && isClientOnly)
+        {
+            units.Add(aUnit);
         }
     }
 
@@ -29,11 +40,22 @@ public class RTS_Networked_Player : NetworkBehaviour
         Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
     }
 
+    [Server]
     private void ServerHandleUnitDespawned(Unit unit)
     {
         if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
         {
             units.Remove(unit);
+            RemoveFromClientSide(unit);
+        }
+    }
+
+    [ClientRpc]
+    private void RemoveFromClientSide(Unit aUnit)
+    {
+        if(hasAuthority && isClientOnly)
+        {
+            units.Remove(aUnit);
         }
     }
 }
