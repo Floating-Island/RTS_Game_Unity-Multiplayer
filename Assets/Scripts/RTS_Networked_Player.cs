@@ -5,5 +5,26 @@ using UnityEngine;
 
 public class RTS_Networked_Player : NetworkBehaviour
 {
+    private List<Unit> units = new List<Unit>();
 
+    public override void OnStartServer()
+    {
+        base.OnStartServer();
+        Unit.ServerOnUnitSpawned += ServerHandleUnitSpawned;
+    }
+
+    private void ServerHandleUnitSpawned(Unit unit)
+    {
+        units.Add(unit);
+    }
+
+    public override void OnStopServer()
+    {
+        base.OnStopServer();
+    }
+
+    private void ServerHandleUnitDespawned(Unit unit)
+    {
+        units.Remove(unit);
+    }
 }
