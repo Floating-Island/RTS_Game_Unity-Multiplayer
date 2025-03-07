@@ -41,7 +41,8 @@ public class UnitSelectionHandler : MonoBehaviour
         }
         else if(Mouse.current.leftButton.wasReleasedThisFrame)
         {
-            ClearSelectionArea();
+            HideSelectionArea();
+            CommandUnits();
         }
         else if(Mouse.current.leftButton.isPressed)
         {
@@ -63,10 +64,8 @@ public class UnitSelectionHandler : MonoBehaviour
         return selectedUnits;
     }
 
-    private void ClearSelectionArea()
+    private void CommandUnits()
     {
-        HideSelectionArea();
-
         if (unitSelectionArea.sizeDelta.magnitude == 0)
         {
             SelectSingle();
@@ -131,7 +130,7 @@ public class UnitSelectionHandler : MonoBehaviour
         DeselectAllUnits();
 
         selectionStartPosition = Mouse.current.position.ReadValue();
-        HideSelectionArea();
+        ShowSelectionArea();
 
         UpdateSelectionArea();
     }
