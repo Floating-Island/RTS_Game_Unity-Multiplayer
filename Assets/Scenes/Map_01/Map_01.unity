@@ -615,7 +615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36abf4a5a9ff16b43a19ff00eeb34494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1687258584}
   selectionHandler: {fileID: 1557982988}
 --- !u!1 &1629123990
 GameObject:
@@ -796,7 +796,7 @@ Transform:
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
   m_LocalRotation: {x: 0.0011300802, y: 0.964993, z: -0.26224095, w: 0.0041272915}
-  m_LocalPosition: {x: 1.14, y: 3.93, z: 7.27}
+  m_LocalPosition: {x: 0, y: 3.93, z: 16.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

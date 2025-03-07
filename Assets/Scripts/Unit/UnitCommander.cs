@@ -24,11 +24,12 @@ public class UnitCommander : MonoBehaviour
 
             if(Physics.Raycast(godRay, out RaycastHit godTouch, Mathf.Infinity))
             {
-                Unit unit = selectionHandler.currentSelectedUnit();
-
-                if(unit)
+                foreach(Unit selectedUnit in selectionHandler.currentSelectedUnits())
                 {
-                    unit.movementComponent().CmdMoveTo(godTouch.point);
+                    if(selectedUnit)
+                    {
+                        selectedUnit.movementComponent().CmdMoveTo(godTouch.point);
+                    }
                 }
             }
         }

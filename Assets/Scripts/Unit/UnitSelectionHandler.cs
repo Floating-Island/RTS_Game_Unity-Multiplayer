@@ -20,7 +20,7 @@ public class UnitSelectionHandler : MonoBehaviour
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // Start selection area
+            DeselectAllUnits();
         }
         else if(Mouse.current.leftButton.wasReleasedThisFrame)
         {
@@ -28,9 +28,9 @@ public class UnitSelectionHandler : MonoBehaviour
         }
     }
 
-    public Unit currentSelectedUnit()
+    public List<Unit> currentSelectedUnits()
     {
-        return selectedUnit;
+        return selectedUnits;
     }
 
     private void ClearSelectionArea()
@@ -55,5 +55,14 @@ public class UnitSelectionHandler : MonoBehaviour
         {
             selectedUnit.Select();
         }   
+    }
+
+    private void DeselectAllUnits()
+    {
+        foreach(Unit selectedUnit in selectedUnits)
+        {
+            selectedUnit.Deselect();
+        }
+        selectedUnits.Clear();
     }
 }
