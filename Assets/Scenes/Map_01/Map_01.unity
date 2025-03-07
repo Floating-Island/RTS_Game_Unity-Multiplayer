@@ -587,6 +587,7 @@ MonoBehaviour:
   unitLayerMask:
     serializedVersion: 2
     m_Bits: 1
+  unitSelectionArea: {fileID: 1629123991}
 --- !u!4 &1557982989
 Transform:
   m_ObjectHideFlags: 0
@@ -615,8 +616,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36abf4a5a9ff16b43a19ff00eeb34494, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1687258584}
   selectionHandler: {fileID: 1557982988}
+  unitLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
 --- !u!1 &1629123990
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,10 +652,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1327274937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 690, y: 374}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1629123992
 MonoBehaviour:
@@ -795,13 +798,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1687258581}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.0011300802, y: 0.964993, z: -0.26224095, w: 0.0041272915}
-  m_LocalPosition: {x: 0, y: 3.93, z: 16.82}
+  m_LocalRotation: {x: 0.0009769608, y: 0.9740066, z: -0.22647922, w: 0.0041670585}
+  m_LocalPosition: {x: 0, y: 3.93, z: 7.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 30.406, y: 179.51, z: 0.001}
+  m_LocalEulerAnglesHint: {x: 26.18, y: 179.51, z: 0.001}
 --- !u!114 &1687258586
 MonoBehaviour:
   m_ObjectHideFlags: 0

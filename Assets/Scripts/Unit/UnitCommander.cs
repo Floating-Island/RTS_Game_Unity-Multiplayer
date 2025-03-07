@@ -5,11 +5,13 @@ using UnityEngine.InputSystem;
 
 public class UnitCommander : MonoBehaviour
 {
-    [SerializeField]
     private Camera mainCamera = null;
 
     [SerializeField]
     private UnitSelectionHandler selectionHandler = null;
+
+    [SerializeField]
+    private LayerMask unitLayerMask = new LayerMask();
 
     void Start()
     {
@@ -18,19 +20,23 @@ public class UnitCommander : MonoBehaviour
 
     void Update()
     {
-        if(Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Ray godRay = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+        if(!Mouse.current.leftButton.wasPressedThisFrame) { return; }
+        
+        Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-            if(Physics.Raycast(godRay, out RaycastHit godTouch, Mathf.Infinity))
+        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, unitLayerMask))
+        {
+            TryMove(hit.point);
+        }
+    }
+
+    private void TryMove(Vector3 point)
+    {
+        foreach(Unit selectedUnit in selectionHandler.currentSelectedUnits())
+        {
+            if(selectedUnit)
             {
-                foreach(Unit selectedUnit in selectionHandler.currentSelectedUnits())
-                {
-                    if(selectedUnit)
-                    {
-                        selectedUnit.movementComponent().CmdMoveTo(godTouch.point);
-                    }
-                }
+                selectedUnit.movementComponent().CmdMoveTo(point);
             }
         }
     }

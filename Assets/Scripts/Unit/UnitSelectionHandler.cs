@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Mirror;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,23 +11,51 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private List<Unit> selectedUnits = new List<Unit>();
 
-    [SerializeField]
-    private LayerMask unitLayerMask = new LayerMask();
+    [SerializeField] private LayerMask unitLayerMask = new LayerMask();
+    [SerializeField] private RectTransform unitSelectionArea = null;
+
+    private Vector2 selectionStartPosition = Vector2.zero;
+    private RTS_Networked_Player player;
+    
     private void Start()
     {
         mainCamera = Camera.main;
+        
+    }
+
+    private void StoreNetworkedPlayer()
+    {
+        if (player == null)
+        {
+            player = RTS_Networked_Player.NetworkedPlayer();
+        }
     }
 
     private void Update()
     {
+        StoreNetworkedPlayer();
+
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
-            DeselectAllUnits();
+            StartSelectionArea();
         }
         else if(Mouse.current.leftButton.wasReleasedThisFrame)
         {
             ClearSelectionArea();
         }
+        else if(Mouse.current.leftButton.isPressed)
+        {
+            UpdateSelectionArea();
+        }
+    }
+
+    private void UpdateSelectionArea()
+    {
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        float areaWidth = mousePosition.x - selectionStartPosition.x;
+        float areaHeight = mousePosition.y - selectionStartPosition.y;
+        unitSelectionArea.sizeDelta = new Vector2(Mathf.Abs(areaWidth), Mathf.Abs(areaHeight));
+        unitSelectionArea.anchoredPosition = selectionStartPosition + new Vector2(areaWidth / 2, areaHeight / 2);
     }
 
     public List<Unit> currentSelectedUnits()
@@ -34,6 +64,45 @@ public class UnitSelectionHandler : MonoBehaviour
     }
 
     private void ClearSelectionArea()
+    {
+        HideSelectionArea();
+
+        if (unitSelectionArea.sizeDelta.magnitude == 0)
+        {
+            SelectSingle();
+        }
+        else
+        {
+            SelectMultiple();
+        }
+    }
+
+    private void HideSelectionArea()
+    {
+        unitSelectionArea.gameObject.SetActive(false);
+    }
+
+    private void SelectMultiple()
+    {
+        foreach(Unit unit in player.GetUnits())
+        {
+            if(selectedUnits.Contains(unit)) { continue; }
+
+            if(UnitInsideSelectionArea(unit))
+            {
+                selectedUnits.Add(unit);
+                unit.Select();
+            }
+        }
+    }
+
+    private bool UnitInsideSelectionArea(Unit unit)
+    {
+        Vector3 unitScreenPosition = mainCamera.WorldToScreenPoint(unit.transform.position);
+        return unitSelectionArea.rect.Contains(unitScreenPosition);
+    }
+
+    private void SelectSingle()
     {
         Ray selectionRay = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -57,9 +126,24 @@ public class UnitSelectionHandler : MonoBehaviour
         }   
     }
 
+    private void StartSelectionArea()
+    {
+        DeselectAllUnits();
+
+        selectionStartPosition = Mouse.current.position.ReadValue();
+        HideSelectionArea();
+
+        UpdateSelectionArea();
+    }
+
+    private void ShowSelectionArea()
+    {
+        unitSelectionArea.gameObject.SetActive(true);
+    }
+
     private void DeselectAllUnits()
     {
-        foreach(Unit selectedUnit in selectedUnits)
+        foreach (Unit selectedUnit in selectedUnits)
         {
             selectedUnit.Deselect();
         }

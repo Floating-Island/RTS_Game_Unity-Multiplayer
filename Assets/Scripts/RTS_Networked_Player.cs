@@ -7,6 +7,15 @@ public class RTS_Networked_Player : NetworkBehaviour
 {
     private List<Unit> units = new List<Unit>();
 
+    public List<Unit> GetUnits()
+    {
+        return units;
+    }
+
+    public static RTS_Networked_Player NetworkedPlayer()
+    {
+        return NetworkClient.connection.identity.GetComponent<RTS_Networked_Player>();
+    }
     public override void OnStartServer()
     {
         base.OnStartServer();
