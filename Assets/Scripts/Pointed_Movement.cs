@@ -8,6 +8,16 @@ public class Pointed_Movement : NetworkBehaviour
 {
     [SerializeField]
     private NavMeshAgent agent = null;
+    
+    [ServerCallback]
+    private void Update()
+    {
+        if(!agent) { return; }
+
+        if(agent.remainingDistance > agent.stoppingDistance) { return; }
+
+        agent.ResetPath();
+    }
 
     [Command]
     public void CmdMoveTo(Vector3 aPosition)
