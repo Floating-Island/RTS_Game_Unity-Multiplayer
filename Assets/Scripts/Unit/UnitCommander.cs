@@ -20,7 +20,7 @@ public class UnitCommander : MonoBehaviour
 
     void Update()
     {
-        if(!Mouse.current.leftButton.wasPressedThisFrame) { return; }
+        if(!Mouse.current.rightButton.wasPressedThisFrame) { return; }
         
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -36,7 +36,7 @@ public class UnitCommander : MonoBehaviour
         {
             if(selectedUnit)
             {
-                selectedUnit.movementComponent().CmdMoveTo(point);
+                selectedUnit.GetUnitMovement().CmdMoveTo(point);
             }
         }
     }

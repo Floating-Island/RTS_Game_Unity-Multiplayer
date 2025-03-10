@@ -20,7 +20,7 @@ public class Unit : NetworkBehaviour
     [SerializeField]
     private UnityEvent onDeselected = null;
 
-    public Pointed_Movement movementComponent()
+    public Pointed_Movement GetUnitMovement()
     {
         return unitMovement;
     }
