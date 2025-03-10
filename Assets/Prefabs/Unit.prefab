@@ -264,6 +264,7 @@ MonoBehaviour:
   syncInterval: 0.1
   agent: {fileID: 1613184995660580874}
   targeter: {fileID: 2559180496831335299}
+  chaseRange: 0.8
 --- !u!135 &3271300213675642104
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -345,7 +346,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  target: {fileID: 0}
 --- !u!114 &4148692631584944053
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class Targeter : NetworkBehaviour
 {
-    [SerializeField] 
     private Targetable target;
 
     [Command]
     public void CmdSetTarget(GameObject target)
     {
+        if(!hasAuthority) {return;}
+        
         if (!target.TryGetComponent<Targetable>(out Targetable targetable))
         { 
             return;
@@ -20,6 +21,14 @@ public class Targeter : NetworkBehaviour
     [Command]
     public void CmdClearTarget()
     {
-        target = null;
+        if(hasAuthority)
+        {
+            target = null;
+        }
+    }
+
+    public Targetable CurrentTarget()
+    {
+        return target;
     }
 }
