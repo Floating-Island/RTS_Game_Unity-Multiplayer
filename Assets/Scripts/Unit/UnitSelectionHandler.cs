@@ -128,8 +128,8 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void StartSelectionArea()
     {
-        if (!Keyboard.current.leftShiftKey.isPressed)
-        { 
+        if (!AddToMultipleSelection())
+        {
             DeselectAllUnits();
         }
 
@@ -137,6 +137,11 @@ public class UnitSelectionHandler : MonoBehaviour
         ShowSelectionArea();
 
         UpdateSelectionArea();
+    }
+
+    private static bool AddToMultipleSelection()
+    {
+        return Keyboard.current.leftShiftKey.isPressed;
     }
 
     private void ShowSelectionArea()
