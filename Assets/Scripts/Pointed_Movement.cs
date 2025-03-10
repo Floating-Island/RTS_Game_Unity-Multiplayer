@@ -35,7 +35,6 @@ public class Pointed_Movement : NetworkBehaviour
             if(targetDistance > chaseRange * chaseRange)
             {
                 agent.SetDestination(target.transform.position);
-                Debug.Log("Chasing target");
             }
             else if(agent.hasPath)
             {
