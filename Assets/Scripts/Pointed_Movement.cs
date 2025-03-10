@@ -35,6 +35,7 @@ public class Pointed_Movement : NetworkBehaviour
             if(targetDistance > chaseRange * chaseRange)
             {
                 agent.SetDestination(target.transform.position);
+                Debug.Log("Chasing target");
             }
             else if(agent.hasPath)
             {
@@ -46,7 +47,7 @@ public class Pointed_Movement : NetworkBehaviour
     [Command]
     public void CmdMoveTo(Vector3 aPosition)
     {
-        targeter.CmdClearTarget();
+        targeter.ClearTarget();
 
         float maxNavMeshDistance = 1f;
 

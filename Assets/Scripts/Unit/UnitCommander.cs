@@ -31,14 +31,14 @@ public class UnitCommander : MonoBehaviour
         {
             if (target.CanBeTargeted())
             {
-                TryTargetMove(target);
+                TryTarget(target);
                 return;
             }
         }
         TryMove(hit.point);
     }
 
-    private void TryTargetMove(Targetable target)
+    private void TryTarget(Targetable target)
     {
         foreach(Unit selectedUnit in selectionHandler.currentSelectedUnits())
         {

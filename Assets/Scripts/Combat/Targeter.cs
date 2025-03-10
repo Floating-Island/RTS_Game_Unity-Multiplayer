@@ -8,8 +8,6 @@ public class Targeter : NetworkBehaviour
     [Command]
     public void CmdSetTarget(GameObject target)
     {
-        if(!hasAuthority) {return;}
-        
         if (!target.TryGetComponent<Targetable>(out Targetable targetable))
         { 
             return;
@@ -18,8 +16,8 @@ public class Targeter : NetworkBehaviour
         this.target = targetable;
     }
 
-    [Command]
-    public void CmdClearTarget()
+    [Server]
+    public void ClearTarget()
     {
         if(hasAuthority)
         {
