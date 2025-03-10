@@ -8,6 +8,9 @@ public class Pointed_Movement : NetworkBehaviour
 {
     [SerializeField]
     private NavMeshAgent agent = null;
+
+    [SerializeField]
+    private Targeter targeter = null;
     
     [ServerCallback]
     private void Update()
@@ -24,6 +27,8 @@ public class Pointed_Movement : NetworkBehaviour
     [Command]
     public void CmdMoveTo(Vector3 aPosition)
     {
+        targeter.CmdClearTarget();
+
         float maxNavMeshDistance = 1f;
 
         if(NavMesh.SamplePosition(aPosition, out NavMeshHit aHit, maxNavMeshDistance, NavMesh.AllAreas))

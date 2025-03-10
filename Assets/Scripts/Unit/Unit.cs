@@ -15,6 +15,9 @@ public class Unit : NetworkBehaviour
     private Pointed_Movement unitMovement = null;
 
     [SerializeField]
+    private Targeter targeter = null;
+
+    [SerializeField]
     private UnityEvent onSelected = null;
 
     [SerializeField]
@@ -53,5 +56,10 @@ public class Unit : NetworkBehaviour
         {
             onDeselected?.Invoke();
         }
+    }
+
+    public Targeter GetTargeter()
+    {
+        return targeter;
     }
 }

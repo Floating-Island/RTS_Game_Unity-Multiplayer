@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,9 +25,27 @@ public class UnitCommander : MonoBehaviour
         
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
-        if(Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, unitLayerMask))
+        if(!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, unitLayerMask)) { return; }
+
+        if (hit.collider.TryGetComponent<Targetable>(out Targetable target))
         {
-            TryMove(hit.point);
+            if (target.CanBeTargeted())
+            {
+                TryTargetMove(target);
+                return;
+            }
+        }
+        TryMove(hit.point);
+    }
+
+    private void TryTargetMove(Targetable target)
+    {
+        foreach(Unit selectedUnit in selectionHandler.currentSelectedUnits())
+        {
+            if(selectedUnit)
+            {
+                selectedUnit.GetTargeter().CmdSetTarget(target.gameObject);
+            }
         }
     }
 
