@@ -128,7 +128,10 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void StartSelectionArea()
     {
-        DeselectAllUnits();
+        if (!Keyboard.current.leftShiftKey.isPressed)
+        { 
+            DeselectAllUnits();
+        }
 
         selectionStartPosition = Mouse.current.position.ReadValue();
         ShowSelectionArea();
