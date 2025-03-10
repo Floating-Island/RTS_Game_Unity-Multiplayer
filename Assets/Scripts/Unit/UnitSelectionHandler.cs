@@ -97,8 +97,9 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private bool UnitInsideSelectionArea(Unit unit)
     {
-        Vector3 unitScreenPosition = mainCamera.WorldToScreenPoint(unit.transform.position);
-        return unitSelectionArea.rect.Contains(unitScreenPosition);
+        Vector2 unitScreenPosition = mainCamera.WorldToScreenPoint(unit.transform.position);
+        // unitSelectionArea.rect is in local space, so we need to subtract the anchoredPosition.
+        return unitSelectionArea.rect.Contains(unitScreenPosition - unitSelectionArea.anchoredPosition, true);
     }
 
     private void SelectSingle()
