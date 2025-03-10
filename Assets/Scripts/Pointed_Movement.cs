@@ -14,6 +14,8 @@ public class Pointed_Movement : NetworkBehaviour
     {
         if(!agent) { return; }
 
+        if(!agent.hasPath) { return; }
+
         if(agent.remainingDistance > agent.stoppingDistance) { return; }
 
         agent.ResetPath();
