@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 2559180496831335299}
   - component: {fileID: 4148692631584944053}
   - component: {fileID: 3108122829900449347}
+  - component: {fileID: 1424651435352772756}
   m_Layer: 0
   m_Name: Unit
   m_TagString: Untagged
@@ -273,7 +274,7 @@ NavMeshAgent:
   m_Acceleration: 7.5
   avoidancePriority: 50
   m_AngularSpeed: 150
-  m_StoppingDistance: 2
+  m_StoppingDistance: 5
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -414,6 +415,21 @@ MonoBehaviour:
   fireRange: 10
   fireRate: 3
   rotationSpeed: 20
+--- !u!114 &1424651435352772756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025136841884947699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4fdd68061d04d74a9521182b536a2a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  maxHealth: 40
 --- !u!1001 &2773767306064277852
 PrefabInstance:
   m_ObjectHideFlags: 0
