@@ -25,8 +25,6 @@ public class UnitFiring : NetworkBehaviour
     [ServerCallback]
     private void Update()
     {
-        if (!hasAuthority) { return; }
-
         Targetable target = targeter.CurrentTarget();
         if (target == null) { return; }
 
@@ -53,6 +51,7 @@ public class UnitFiring : NetworkBehaviour
         }
     }
 
+    [Server]
     private void FireProjectile(Targetable target)
     {
         Quaternion projectileRotation = Quaternion.LookRotation(target.GetAimAtPoint().position - projectileSpawnPoint.position);
