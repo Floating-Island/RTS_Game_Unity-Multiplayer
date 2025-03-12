@@ -6,12 +6,17 @@ public class Health : NetworkBehaviour
 {
     [SerializeField] private int maxHealth = 100;
     
-    [SyncVar]
+    [SyncVar(hook = nameof(HealthUpdated))]
     private int currentHealth;
+
+    private void  HealthUpdated(int oldHealth, int newHealth)
+    {
+        OnHealthUpdate?.Invoke(oldHealth, newHealth);
+    }
 
     public event Action ServerOnDie;
 
-    public event Action ServerOnHealthUpdate;
+    public event Action<int, int> OnHealthUpdate;
 
     public override void OnStartServer()
     {
@@ -33,5 +38,10 @@ public class Health : NetworkBehaviour
             ServerOnDie?.Invoke();
             Debug.Log(name + "dead");
         }
+    }
+
+    public int GetMaxHealth()
+    {
+        return maxHealth;
     }
 }
