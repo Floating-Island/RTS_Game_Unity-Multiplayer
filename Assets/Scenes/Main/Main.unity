@@ -135,6 +135,10 @@ PrefabInstance:
       propertyPath: offlineScene
       value: Assets/Scenes/Main/Main.unity
       objectReference: {fileID: 0}
+    - target: {fileID: 2490543546649994879, guid: 35b71031d8f99654ab16a6ffa43a812f, type: 3}
+      propertyPath: gameOverHandler
+      value: 
+      objectReference: {fileID: 1105571658637315080, guid: b880c38c5fa0a364d891b814ebc439fb, type: 3}
     - target: {fileID: 3876164310928022993, guid: 35b71031d8f99654ab16a6ffa43a812f, type: 3}
       propertyPath: m_Name
       value: Network Manager
