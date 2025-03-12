@@ -36,12 +36,6 @@ public class GameOverHandler : NetworkBehaviour
     {
         if(bases.Count != 1) { return; }
 
-        RpcGameOver();
-    }
-
-    [ClientRpc]
-    private void RpcGameOver()
-    {
-        Debug.Log("Game Over. " + (connectionToClient.identity.GetComponent<RTS_Networked_Player>().GetUnits().Count > 0 ? "You Win!" : "You Lose!"));
+        Debug.Log("Game Over.");
     }
 }
