@@ -320,7 +320,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 5
+  m_Radius: 2
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!114 &7498405168372112558
 MonoBehaviour:
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: {fileID: 1424651435352772756}
-  healthBar: {fileID: 6399856000772246782}
+  healthBarCanvas: {fileID: 6399856000772246782}
   healthBarFill: {fileID: 3485783470264782759}
   deactivateDelay: 0.8
 --- !u!1001 &926002905057020119
