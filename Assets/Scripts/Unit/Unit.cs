@@ -10,6 +10,9 @@ public class Unit : NetworkBehaviour
     public static event Action<Unit> ServerOnUnitSpawned;
     public static event Action<Unit> ServerOnUnitDespawned;
 
+    public static event Action<Unit> AuthorityOnUnitSpawned;
+    public static event Action<Unit> AuthorityOnUnitDespawned;
+
 
     [SerializeField]
     private Pointed_Movement unitMovement = null;
@@ -48,6 +51,17 @@ public class Unit : NetworkBehaviour
         base.OnStopServer();
         ServerOnUnitDespawned?.Invoke(this);
         health.ServerOnDie -= ServerHandleDie;
+    }
+
+    public override void OnStartAuthority()
+    {
+        AuthorityOnUnitSpawned?.Invoke(this);
+    }
+
+    public override void OnStopClient()
+    {
+        if(!hasAuthority) { return; }
+        AuthorityOnUnitDespawned?.Invoke(this);
     }
 
     [Client]

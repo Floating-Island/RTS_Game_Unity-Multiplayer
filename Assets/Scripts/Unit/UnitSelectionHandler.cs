@@ -20,7 +20,18 @@ public class UnitSelectionHandler : MonoBehaviour
     private void Start()
     {
         mainCamera = Camera.main;
-        
+
+        Unit.AuthorityOnUnitDespawned += DeselectUnit;
+    }
+
+    private void DeselectUnit(Unit unit)
+    {
+        selectedUnits.Remove(unit);
+    }
+
+    private void OnDestroy()
+    {
+        Unit.AuthorityOnUnitDespawned -= DeselectUnit;
     }
 
     private void StoreNetworkedPlayer()
