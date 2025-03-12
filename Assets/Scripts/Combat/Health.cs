@@ -30,13 +30,13 @@ public class Health : NetworkBehaviour
         {
             return;
         }
-        currentHealth = currentHealth - damageAmount;
+        currentHealth -= damageAmount;
         currentHealth = Mathf.Max(currentHealth, 0);
 
         if (currentHealth == 0)
         {
-            ServerOnDie?.Invoke();
             Debug.Log(name + "dead");
+            ServerOnDie?.Invoke();
         }
     }
 
