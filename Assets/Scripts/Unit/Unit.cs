@@ -23,6 +23,9 @@ public class Unit : NetworkBehaviour
     [SerializeField]
     private UnityEvent onDeselected = null;
 
+    [SerializeField]
+    private Health health = null;
+
     public Pointed_Movement GetUnitMovement()
     {
         return unitMovement;
@@ -32,12 +35,19 @@ public class Unit : NetworkBehaviour
     {
         base.OnStartServer();
         ServerOnUnitSpawned?.Invoke(this);
+        health.ServerOnDie += ServerHandleDie;
+    }
+
+    private void ServerHandleDie()
+    {
+        NetworkServer.Destroy(gameObject);
     }
 
     public override void OnStopServer()
     {
         base.OnStopServer();
         ServerOnUnitDespawned?.Invoke(this);
+        health.ServerOnDie -= ServerHandleDie;
     }
 
     [Client]
