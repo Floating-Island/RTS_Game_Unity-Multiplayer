@@ -1,4 +1,5 @@
 using Mirror;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,22 @@ public class Pointed_Movement : NetworkBehaviour
 
     [SerializeField]
     private float chaseRange = 10f;
+
+    public override void OnStartServer()
+    {
+        GameOverHandler.ServerOnGameOver += ServerHandleGameOver;
+    }
+
+    [Server]
+    private void ServerHandleGameOver(int obj)
+    {
+        agent.ResetPath();
+    }
+
+    public override void OnStopServer()
+    {
+        GameOverHandler.ServerOnGameOver -= ServerHandleGameOver;
+    }
     
     [ServerCallback]
     private void Update()

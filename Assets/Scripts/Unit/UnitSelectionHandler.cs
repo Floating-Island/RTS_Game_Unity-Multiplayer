@@ -22,11 +22,14 @@ public class UnitSelectionHandler : MonoBehaviour
         mainCamera = Camera.main;
 
         Unit.AuthorityOnUnitDespawned += DeselectUnit;
-        GameOverHandler.ClientOnGameOver += HandleClientOnGameOver;
+        GameOverHandler.ClientPlayerDied += HandleClientOnPlayerDied;
+        GameOverHandler.ClientOnGameOver += HandleClientOnPlayerDied;
     }
 
-    private void HandleClientOnGameOver(int obj)
+    private void HandleClientOnPlayerDied(int connectionId)
     {
+        if (connectionId != player.connectionToClient.connectionId) { return; }
+
         gameObject.SetActive(false);
     }
 
@@ -38,7 +41,8 @@ public class UnitSelectionHandler : MonoBehaviour
     private void OnDestroy()
     {
         Unit.AuthorityOnUnitDespawned -= DeselectUnit;
-        GameOverHandler.ClientOnGameOver -= HandleClientOnGameOver;
+        GameOverHandler.ClientPlayerDied -= HandleClientOnPlayerDied;
+        GameOverHandler.ClientOnGameOver -= HandleClientOnPlayerDied;
     }
 
     private void StoreNetworkedPlayer()

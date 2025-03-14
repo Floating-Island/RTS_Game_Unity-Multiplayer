@@ -21,10 +21,10 @@ public class Health : NetworkBehaviour
     public override void OnStartServer()
     {
         currentHealth = maxHealth;
-        GameOverHandler.ServerOnGameOver += ServerHandleGameOver;
+        GameOverHandler.ServerPlayerDied += ServerHandlePlayerDied;
     }
     
-    private void ServerHandleGameOver(int connectionId)
+    private void ServerHandlePlayerDied(int connectionId)
     {
         if (connectionId != connectionToClient.connectionId) { return; }
 
@@ -33,7 +33,7 @@ public class Health : NetworkBehaviour
 
     public override void OnStopServer()
     {
-        GameOverHandler.ServerOnGameOver -= ServerHandleGameOver;
+        GameOverHandler.ServerPlayerDied -= ServerHandlePlayerDied;
     }
 
     [Server]

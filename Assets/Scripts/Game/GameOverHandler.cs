@@ -9,6 +9,9 @@ public class GameOverHandler : NetworkBehaviour
 
     public static event Action<int> ClientOnGameOver;
     public static event Action<int> ServerOnGameOver;
+
+    public static event Action<int> ServerPlayerDied;
+    public static event Action<int> ClientPlayerDied;
     public override void OnStartServer()
     {
         UnitBase.ServerOnBaseSpawned += HandleServerBaseSpawned;
@@ -30,8 +33,16 @@ public class GameOverHandler : NetworkBehaviour
     [Server]
     private void HandleServerBaseDespawned(UnitBase unitBase)
     {
+        ServerPlayerDied?.Invoke(unitBase.connectionToClient.connectionId);
+        RpcClientPlayerDied(unitBase.connectionToClient.connectionId);
         bases.Remove(unitBase);
         CheckForGameOver();
+    }
+
+    [ClientRpc]
+    private void RpcClientPlayerDied(int connectionId)
+    {
+        ClientPlayerDied?.Invoke(connectionId);
     }
 
     [Server]
