@@ -46,6 +46,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     {
         if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
         {
+            if (units.Contains(unit)) { return; }
             units.Add(unit);
             AddToClientSide(unit);
         }
