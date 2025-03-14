@@ -22,6 +22,12 @@ public class UnitSelectionHandler : MonoBehaviour
         mainCamera = Camera.main;
 
         Unit.AuthorityOnUnitDespawned += DeselectUnit;
+        GameOverHandler.ClientOnGameOver += HandleClientOnGameOver;
+    }
+
+    private void HandleClientOnGameOver(int obj)
+    {
+        gameObject.SetActive(false);
     }
 
     private void DeselectUnit(Unit unit)
@@ -32,6 +38,7 @@ public class UnitSelectionHandler : MonoBehaviour
     private void OnDestroy()
     {
         Unit.AuthorityOnUnitDespawned -= DeselectUnit;
+        GameOverHandler.ClientOnGameOver -= HandleClientOnGameOver;
     }
 
     private void StoreNetworkedPlayer()

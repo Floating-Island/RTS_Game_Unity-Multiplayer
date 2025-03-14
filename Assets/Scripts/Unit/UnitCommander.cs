@@ -17,6 +17,17 @@ public class UnitCommander : MonoBehaviour
     void Start()
     {
         mainCamera = Camera.main;
+        GameOverHandler.ClientOnGameOver += HandleClientOnGameOver;
+    }
+
+    private void HandleClientOnGameOver(int obj)
+    {
+        gameObject.SetActive(false);
+    }
+
+    void OnDestroy()
+    {
+        GameOverHandler.ClientOnGameOver -= HandleClientOnGameOver;
     }
 
     void Update()
