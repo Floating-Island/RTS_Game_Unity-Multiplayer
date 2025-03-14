@@ -8,6 +8,7 @@ public class GameOverHandler : NetworkBehaviour
     private List<UnitBase> bases = new List<UnitBase>();
 
     public static event Action<int> ClientOnGameOver;
+    public static event Action<int> ServerOnGameOver;
     public override void OnStartServer()
     {
         UnitBase.ServerOnBaseSpawned += HandleServerBaseSpawned;
@@ -40,6 +41,7 @@ public class GameOverHandler : NetworkBehaviour
 
         int winnerId = bases[0].connectionToClient.connectionId;
         RpcGameOver(winnerId);
+        ServerOnGameOver?.Invoke(winnerId);
     }
 
     [ClientRpc]
