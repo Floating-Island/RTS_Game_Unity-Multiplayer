@@ -6,6 +6,8 @@ using UnityEngine;
 public class GameOverHandler : NetworkBehaviour
 {
     private List<UnitBase> bases = new List<UnitBase>();
+
+    public static event Action<int> ClientOnGameOver;
     public override void OnStartServer()
     {
         UnitBase.ServerOnBaseSpawned += HandleServerBaseSpawned;
@@ -36,6 +38,13 @@ public class GameOverHandler : NetworkBehaviour
     {
         if(bases.Count != 1) { return; }
 
-        Debug.Log("Game Over.");
+        int winnerId = bases[0].connectionToClient.connectionId;
+        RpcGameOver(winnerId);
+    }
+
+    [ClientRpc]
+    private void RpcGameOver(int winnerId)
+    {
+        ClientOnGameOver?.Invoke(winnerId);
     }
 }
