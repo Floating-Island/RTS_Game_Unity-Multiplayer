@@ -21,6 +21,19 @@ public class Health : NetworkBehaviour
     public override void OnStartServer()
     {
         currentHealth = maxHealth;
+        UnitBase.ServerOnBaseDespawned += ServerHandleBaseDespawned;
+    }
+    
+    private void ServerHandleBaseDespawned(UnitBase @base)
+    {
+        if (@base.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
+
+        ReceiveDamage(currentHealth);
+    }
+
+    public override void OnStopServer()
+    {
+        UnitBase.ServerOnBaseDespawned -= ServerHandleBaseDespawned;
     }
 
     [Server]

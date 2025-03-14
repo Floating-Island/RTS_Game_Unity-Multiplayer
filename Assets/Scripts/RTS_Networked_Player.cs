@@ -22,23 +22,6 @@ public class RTS_Networked_Player : NetworkBehaviour
         base.OnStartServer();
         Unit.ServerOnUnitSpawned += ServerHandleUnitSpawned;
         Unit.ServerOnUnitDespawned += ServerHandleUnitDespawned;
-        UnitBase.ServerOnBaseDespawned += ServerHandleBaseDespawned;
-    }
-
-    [Server]
-    private void ServerHandleBaseDespawned(UnitBase @base)
-    {
-        if (@base.connectionToClient.connectionId != connectionToClient.connectionId) { return; }
-        
-        // copy list because whenever we destroy a unit, it will remove itself from the list, changing the iterator.
-        List<Unit> remainingUnits = new List<Unit>();
-        remainingUnits.AddRange(units);
-
-        foreach(Unit unit in remainingUnits)
-        {
-            if (unit == null) { continue; }
-            unit.ServerHandleDie();
-        }
     }
 
     [Server]
@@ -66,7 +49,6 @@ public class RTS_Networked_Player : NetworkBehaviour
         base.OnStopServer();
         Unit.ServerOnUnitSpawned -= ServerHandleUnitSpawned;
         Unit.ServerOnUnitDespawned -= ServerHandleUnitDespawned;
-        UnitBase.ServerOnBaseDespawned -= ServerHandleBaseDespawned;
     }
 
     [Server]
