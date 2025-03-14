@@ -14,6 +14,9 @@ public class Building : NetworkBehaviour
     [SerializeField]
     private int price = 100;
 
+    [SerializeField]
+    private GameObject buildingPreview = null;
+
     public static event Action<Building> ServerOnBuildingSpawned;
     public static event Action<Building> ServerOnBuildingDespawned;
 
@@ -33,6 +36,11 @@ public class Building : NetworkBehaviour
     public int GetId()
     {
         return id;
+    }
+
+    public GameObject GetBuildingPreview()
+    {
+        return buildingPreview;
     }
 
     public override void OnStartServer()
