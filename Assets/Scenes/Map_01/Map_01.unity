@@ -219,8 +219,8 @@ GameObject:
   - component: {fileID: 468107039}
   - component: {fileID: 468107038}
   - component: {fileID: 468107037}
-  m_Layer: 0
-  m_Name: Cube
+  m_Layer: 10
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -629,7 +629,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 256
   unitSelectionArea: {fileID: 1629123991}
 --- !u!4 &1557982989
 Transform:
@@ -662,7 +662,7 @@ MonoBehaviour:
   selectionHandler: {fileID: 1557982988}
   unitLayerMask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1281
 --- !u!1 &1629123990
 GameObject:
   m_ObjectHideFlags: 0
