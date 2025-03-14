@@ -14,39 +14,24 @@ public class UnitCommander : MonoBehaviour
     [SerializeField]
     private LayerMask unitLayerMask = new LayerMask();
 
-    private RTS_Networked_Player player;
-
     void Start()
     {
         mainCamera = Camera.main;
-        GameOverHandler.ClientPlayerDied += HandleClientOnPlayerDied;
-        GameOverHandler.ClientOnGameOver += HandleClientOnPlayerDied;
+        GameOverHandler.ClientOnGameOver += HandleOnGameOver;
     }
 
-    private void HandleClientOnPlayerDied(int connectionId)
+    private void HandleOnGameOver(int connectionId)
     {
-        if (connectionId != player.connectionToClient.connectionId) { return; }
-        gameObject.SetActive(false);
+        enabled = false;
     }
 
     void OnDestroy()
     {
-        GameOverHandler.ClientPlayerDied -= HandleClientOnPlayerDied;
-        GameOverHandler.ClientOnGameOver -= HandleClientOnPlayerDied;
-    }
-
-    private void StoreNetworkedPlayer()
-    {
-        if (player == null)
-        {
-            player = RTS_Networked_Player.NetworkedPlayer();
-        }
+        GameOverHandler.ClientOnGameOver -= HandleOnGameOver;
     }
 
     void Update()
     {
-        StoreNetworkedPlayer();
-
         if(!Mouse.current.rightButton.wasPressedThisFrame) { return; }
         
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
