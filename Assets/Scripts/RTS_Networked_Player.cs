@@ -7,6 +7,7 @@ using UnityEngine;
 public class RTS_Networked_Player : NetworkBehaviour
 {
     [SerializeField] private BuildingFactory buildingFactory = null;
+    [SerializeField] private ResourceStorage resourceStorage = null;
     private List<Unit> units = new List<Unit>();
 
     private List<Building> buildings = new List<Building>();
@@ -19,6 +20,11 @@ public class RTS_Networked_Player : NetworkBehaviour
     public List<Building> GetBuildings()
     {
         return buildings;
+    }
+
+    public ResourceStorage GetResourceStorage()
+    {
+        return resourceStorage;
     }
 
     public static RTS_Networked_Player NetworkedPlayer()

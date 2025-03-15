@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 300903075416980}
   - component: {fileID: 2980179958957055264}
   - component: {fileID: 1575223359540320624}
+  - component: {fileID: 4233467889946248698}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -66,8 +67,7 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   buildingFactory: {fileID: 1575223359540320624}
-  buildingPrefabs:
-  - {fileID: 4064130086417609093, guid: e3c7d7a4b3f96324c81c8f428d3e6ccd, type: 3}
+  resourceStorage: {fileID: 4233467889946248698}
 --- !u!114 &1575223359540320624
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84,3 +84,19 @@ MonoBehaviour:
   syncInterval: 0.1
   buildingPrefabs:
   - {fileID: 4064130086417609093, guid: e3c7d7a4b3f96324c81c8f428d3e6ccd, type: 3}
+  - {fileID: 4064130086417609093, guid: c7a253fb1aef29a4e925d597f9751480, type: 3}
+--- !u!114 &4233467889946248698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8757948081774818092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e540ad4695ca92438f30e8c262f749c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  startResourceAmount: 500
