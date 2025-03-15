@@ -6,6 +6,7 @@ using UnityEngine;
 
 public class RTS_Networked_Player : NetworkBehaviour
 {
+    [SerializeField] private BuildingFactory buildingFactory = null;
     private List<Unit> units = new List<Unit>();
 
     private List<Building> buildings = new List<Building>();
@@ -48,6 +49,12 @@ public class RTS_Networked_Player : NetworkBehaviour
         {
             buildings.Remove(building);
         }
+    }
+
+    [Command]
+    public void CmdTryPlaceBuilding(int buildingId, Vector3 spawnLocation)
+    {
+        buildingFactory.ServerSpawnBuilding(buildingId, spawnLocation);
     }
 
     [Server]
