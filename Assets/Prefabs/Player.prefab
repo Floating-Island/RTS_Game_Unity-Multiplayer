@@ -66,6 +66,8 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   buildingFactory: {fileID: 1575223359540320624}
+  buildingPrefabs:
+  - {fileID: 4064130086417609093, guid: e3c7d7a4b3f96324c81c8f428d3e6ccd, type: 3}
 --- !u!114 &1575223359540320624
 MonoBehaviour:
   m_ObjectHideFlags: 0
