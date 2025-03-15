@@ -26,7 +26,7 @@ public class BuildingFactory : NetworkBehaviour
         Building buildingPrefab = FindBuilding(buildingId);
         if (buildingPrefab == null) { return; }
         
-        GameObject buildingInstance = Instantiate(buildingPrefab.gameObject, spawnLocation, new Quaternion());
+        GameObject buildingInstance = Instantiate(buildingPrefab.gameObject, spawnLocation, buildingPrefab.transform.rotation);
         Debug.Log("Creating " + buildingInstance.name + " at location " + buildingInstance.transform.position);
         NetworkServer.Spawn(buildingInstance, connectionToClient);
     }
