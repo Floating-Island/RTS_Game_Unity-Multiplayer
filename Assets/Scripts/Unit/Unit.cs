@@ -29,6 +29,14 @@ public class Unit : NetworkBehaviour
     [SerializeField]
     private Health health = null;
 
+    [SerializeField]
+    private int cost = 20;
+
+    public int GetCost()
+    {
+        return cost;
+    }
+
     public Pointed_Movement GetUnitMovement()
     {
         return unitMovement;

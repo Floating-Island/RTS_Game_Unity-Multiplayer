@@ -2,19 +2,26 @@ using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
+public class UnitSpawner : NetworkBehaviour
 {
     [SerializeField]
-    private GameObject unitPrefab = null;
+    private Unit unitPrefab = null;
     
     [SerializeField]
     private GameObject spawnPoint = null;
 
     [SerializeField]
     private Health health = null;
+
+    
+    [SerializeField]
+    private float spawnMoveRange = 7f;
+
     
     public override void OnStartServer()
     {
@@ -32,20 +39,26 @@ public class UnitSpawner : NetworkBehaviour, IPointerClickHandler
         NetworkServer.Destroy(gameObject);
     }
 
-    [Command]
-    private void CmdSpawnUnit()
+    [Server]
+    public void SpawnUnit()
     {
+        Vector3 spawnOffset = UnityEngine.Random.insideUnitSphere * spawnMoveRange;
+        spawnOffset.y = spawnPoint.transform.position.y;
+
         Transform spawnPointTransform = spawnPoint.transform;
-        GameObject unitInstance = Instantiate(unitPrefab, spawnPointTransform.position, spawnPointTransform.rotation);
+        spawnPointTransform.position += spawnOffset;
+
+        GameObject unitInstance = Instantiate(unitPrefab.gameObject, spawnPointTransform.position, spawnPointTransform.rotation);
 
         NetworkServer.Spawn(unitInstance, connectionToClient);
     }
 
-    void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
+    [Server]
+    public bool BuyUnit()
     {
-        if(hasAuthority && eventData.button == PointerEventData.InputButton.Right)
-        {
-            CmdSpawnUnit();
-        }
+        RTS_Networked_Player player = RTS_Networked_Player.NetworkedPlayer();
+
+        int unitPrice = unitPrefab.GetCost();
+        return player.GetResourceStorage().ServerAttemptRemoveResource(unitPrice);
     }
 }
