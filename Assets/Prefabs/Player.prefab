@@ -85,6 +85,10 @@ MonoBehaviour:
   buildingPrefabs:
   - {fileID: 4064130086417609093, guid: e3c7d7a4b3f96324c81c8f428d3e6ccd, type: 3}
   - {fileID: 4064130086417609093, guid: c7a253fb1aef29a4e925d597f9751480, type: 3}
+  buildingRangeLimit: 5
+  buildingLayerMask:
+    serializedVersion: 2
+    m_Bits: 321
 --- !u!114 &4233467889946248698
 MonoBehaviour:
   m_ObjectHideFlags: 0

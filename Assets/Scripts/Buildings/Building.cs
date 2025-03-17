@@ -62,4 +62,16 @@ public class Building : NetworkBehaviour
     {
         AuthorityOnBuildingDespawned?.Invoke(this);
     }
+
+    public bool CollidesAtLocation(Vector3 location, LayerMask buildingLayerMask)
+    {
+        bool collides = false;
+        BoxCollider buildingCollider = GetComponent<BoxCollider>();
+        Vector3 colliderExtent = buildingCollider.size / 2;
+        if (Physics.CheckBox(location + buildingCollider.center, colliderExtent, transform.rotation, buildingLayerMask))
+        {
+            collides = true;
+        }
+        return collides;
+    }
 }

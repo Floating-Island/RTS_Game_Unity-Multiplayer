@@ -9,7 +9,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     [SerializeField] private BuildingFactory buildingFactory = null;
     [SerializeField] private ResourceStorage resourceStorage = null;
     private List<Unit> units = new List<Unit>();
-
+    
     private List<Building> buildings = new List<Building>();
 
     public List<Unit> GetUnits()
@@ -20,6 +20,11 @@ public class RTS_Networked_Player : NetworkBehaviour
     public List<Building> GetBuildings()
     {
         return buildings;
+    }
+
+    public BuildingFactory GetBuildingFactory()
+    {
+        return buildingFactory;
     }
 
     public ResourceStorage GetResourceStorage()

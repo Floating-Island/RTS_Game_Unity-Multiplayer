@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8129747531857239186}
   - component: {fileID: 5884972007143903909}
   - component: {fileID: 7255544225375991882}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Shape
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -117,7 +117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 306115904822672136}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: UnitSpawnerPreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}

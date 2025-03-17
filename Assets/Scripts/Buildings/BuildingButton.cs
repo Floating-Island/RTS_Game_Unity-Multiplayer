@@ -65,17 +65,30 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 
     private void UpdateBuildingPreview()
     {
+        if (player == null) { return; }
+
         if (buildingPreviewInstance == null) { return; }
 
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
         if (!Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask)) { return; }
-        
+
         buildingPreviewInstance.transform.position = hit.point;
 
         if (!buildingPreviewInstance.activeSelf)
         {
             buildingPreviewInstance.SetActive(true);
         }
+
+        UpdatePreviewColor(hit.point);
+    }
+
+    private void UpdatePreviewColor(Vector3 spawnLocation)
+    {
+        bool canPlaceBuilding = player.GetBuildingFactory().CanPlaceBuilding(spawnLocation, building);
+
+        Color previewColor = canPlaceBuilding ? Color.green : Color.red;
+
+        buildingRendererInstance.material.SetColor("_BaseColor", previewColor);
     }
 }
