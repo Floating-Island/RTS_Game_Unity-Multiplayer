@@ -13,7 +13,7 @@ public class ResourceGenerator : NetworkBehaviour
 
     public override void OnStartServer()
     {
-        player = connectionToClient.identity.GetComponent<RTS_Networked_Player>();
+        player = RTS_Networked_Player.ServerNetworkedPlayer(this);
 
         health.ServerOnDie += ServerHandleDie;
         GameOverHandler.ServerOnGameOver += ServerHandleGameOver;

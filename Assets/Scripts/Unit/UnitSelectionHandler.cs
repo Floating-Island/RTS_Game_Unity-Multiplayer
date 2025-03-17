@@ -45,7 +45,7 @@ public class UnitSelectionHandler : MonoBehaviour
     {
         if (player == null)
         {
-            player = RTS_Networked_Player.NetworkedPlayer();
+            player = RTS_Networked_Player.ClientNetworkedPlayer();
         }
     }
 

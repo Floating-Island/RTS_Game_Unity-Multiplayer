@@ -34,7 +34,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     {
         if (player == null)
         {
-            player = NetworkClient.connection.identity.GetComponent<RTS_Networked_Player>();
+            player = RTS_Networked_Player.ClientNetworkedPlayer();
         }
     }
 
@@ -63,6 +63,7 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         Destroy(buildingPreviewInstance);
     }
 
+    [ClientCallback]
     private void UpdateBuildingPreview()
     {
         if (player == null) { return; }

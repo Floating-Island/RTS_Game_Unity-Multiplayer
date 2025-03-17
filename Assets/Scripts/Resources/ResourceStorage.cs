@@ -48,6 +48,8 @@ public class ResourceStorage : NetworkBehaviour
         
         lock(this)
         {
+            Debug.Log(" current resources: "+ resource.ToString());
+            Debug.Log(" amount to subtract: "+ amount.ToString());
             if (resource >= amount)
             {
                 resource -= amount;

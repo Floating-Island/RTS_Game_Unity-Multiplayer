@@ -56,7 +56,7 @@ public class UnitSpawner : NetworkBehaviour
     [Server]
     public bool BuyUnit()
     {
-        RTS_Networked_Player player = RTS_Networked_Player.NetworkedPlayer();
+        RTS_Networked_Player player = RTS_Networked_Player.ServerNetworkedPlayer(this);
 
         int unitPrice = unitPrefab.GetCost();
         return player.GetResourceStorage().ServerAttemptRemoveResource(unitPrice);

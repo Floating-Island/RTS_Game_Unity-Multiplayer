@@ -31,7 +31,7 @@ public class BuildingFactory : NetworkBehaviour
         Building buildingPrefab = FindBuilding(buildingId);
 
         if (!CanPlaceBuilding(spawnLocation, buildingPrefab)) { return; }
-
+        Debug.Log("can place building");
         if (!BuyBuilding(buildingPrefab)) { return; }
 
         GameObject buildingInstance = Instantiate(buildingPrefab.gameObject, spawnLocation, buildingPrefab.transform.rotation);
@@ -39,27 +39,37 @@ public class BuildingFactory : NetworkBehaviour
         NetworkServer.Spawn(buildingInstance, connectionToClient);
     }
 
-    public bool CanPlaceBuilding(Vector3 spawnLocation, Building buildingPrefab)
+    public bool CanPlaceBuilding(Vector3 location, Building buildingPrefab)
     {
         if (buildingPrefab == null) { Debug.Log("prefab is null"); return false; }
 
-        if (BuildingCollides(spawnLocation, buildingPrefab)) { Debug.Log("building collides"); return false; }
+        if (BuildingCollides(location, buildingPrefab)) { Debug.Log("building collides"); return false; }
 
-        if (!BuildingInRange(spawnLocation)) { Debug.Log("building is not in range"); return false; }
+        if (!BuildingInRange(location)) { Debug.Log("building is not in range"); return false; }
 
         return true;
     }
 
-    private bool BuildingInRange(Vector3 spawnLocation)
+    private bool BuildingInRange(Vector3 location)
     {
         bool inRange = false;
 
-        RTS_Networked_Player player = RTS_Networked_Player.NetworkedPlayer();
+        RTS_Networked_Player player = null;
+        // used by client and server so it needs to resolve which player to call.
+        if (isServer)
+        {
+            player = RTS_Networked_Player.ServerNetworkedPlayer(this);
+        }
+        else
+        {
+            player = RTS_Networked_Player.ClientNetworkedPlayer();
+        }
+        
         float buildingSquareRangeLimit = buildingRangeLimit * buildingRangeLimit;
 
         foreach( Building building in player.GetBuildings())
         {
-            if ((spawnLocation - building.transform.position).sqrMagnitude <= buildingSquareRangeLimit)
+            if ((location - building.transform.position).sqrMagnitude <= buildingSquareRangeLimit)
             {
                 inRange = true;
                 break;
@@ -68,7 +78,6 @@ public class BuildingFactory : NetworkBehaviour
         return inRange;
     }
 
-    [Server]
     private bool BuildingCollides(Vector3 spawnLocation, Building buildingPrefab)
     {
         return buildingPrefab.CollidesAtLocation(spawnLocation, buildingLayerMask);
@@ -77,7 +86,7 @@ public class BuildingFactory : NetworkBehaviour
     [Server]
     private bool BuyBuilding(Building buildingPrefab)
     {
-        RTS_Networked_Player player = RTS_Networked_Player.NetworkedPlayer();
+        RTS_Networked_Player player = RTS_Networked_Player.ServerNetworkedPlayer(this);
 
         int buildingPrice = buildingPrefab.GetPrice();
         return player.GetResourceStorage().ServerAttemptRemoveResource(buildingPrice);

@@ -23,7 +23,7 @@ public class ResourceDisplay : MonoBehaviour
     {
         if (player == null)
         {
-            player = RTS_Networked_Player.NetworkedPlayer();
+            player = RTS_Networked_Player.ClientNetworkedPlayer();
 
             if (player == null) { return; }
 

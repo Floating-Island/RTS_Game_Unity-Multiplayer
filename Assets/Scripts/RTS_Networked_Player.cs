@@ -10,6 +10,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     [SerializeField] private ResourceStorage resourceStorage = null;
     private List<Unit> units = new List<Unit>();
     
+    [SerializeField]
     private List<Building> buildings = new List<Building>();
 
     public List<Unit> GetUnits()
@@ -32,9 +33,16 @@ public class RTS_Networked_Player : NetworkBehaviour
         return resourceStorage;
     }
 
-    public static RTS_Networked_Player NetworkedPlayer()
+    [Client]
+    public static RTS_Networked_Player ClientNetworkedPlayer()
     {
         return NetworkClient.connection.identity.GetComponent<RTS_Networked_Player>();
+    }
+
+    [Server]
+    public static RTS_Networked_Player ServerNetworkedPlayer(NetworkBehaviour gameObject)
+    {
+        return gameObject.connectionToClient.identity.GetComponent<RTS_Networked_Player>();
     }
     public override void OnStartServer()
     {

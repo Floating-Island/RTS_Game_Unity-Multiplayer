@@ -60,6 +60,7 @@ public class Building : NetworkBehaviour
 
     public override void OnStopClient()
     {
+        if (!hasAuthority) { return; }
         AuthorityOnBuildingDespawned?.Invoke(this);
     }
 
