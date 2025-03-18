@@ -11,9 +11,15 @@ public class RTS_NetworkManager : NetworkManager
     [SerializeField]
     private GameOverHandler gameOverHandler = null;
 
+    [SerializeField]
+    private TeamColor teamColors;
+
     public override void OnServerAddPlayer(NetworkConnectionToClient conn)
     {
         base.OnServerAddPlayer(conn);
+
+        RTS_Networked_Player player = conn.identity.GetComponent<RTS_Networked_Player>();
+        player.SetTeamColor(teamColors.GetColor());
 
         Transform playerTransform = conn.identity.transform;
         GameObject unitSpawner = Instantiate(unitSpawnerPrefab, playerTransform.position, playerTransform.rotation);

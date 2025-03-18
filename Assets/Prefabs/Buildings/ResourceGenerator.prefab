@@ -124,6 +124,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5752782445310896091, guid: 08b1af46a7f12fd46ab527c49239e5a0, type: 3}
   m_PrefabInstance: {fileID: 5694924141437601840}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &2207873813721471637 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 5884972007143903909, guid: 08b1af46a7f12fd46ab527c49239e5a0, type: 3}
+  m_PrefabInstance: {fileID: 5694924141437601840}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5420053144642138936 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 306115904822672136, guid: 08b1af46a7f12fd46ab527c49239e5a0, type: 3}
@@ -248,6 +253,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8394334665480604135, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8651652942487803777}
+    - targetCorrespondingSourceObject: {fileID: 8394334665480604135, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8561231465842857318}
   m_SourcePrefab: {fileID: 100100000, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
 --- !u!1 &2725351649771552576 stripped
 GameObject:
@@ -286,6 +294,22 @@ MonoBehaviour:
   health: {fileID: 5459787427900466961}
   resourcesPerInterval: 10
   intervalSeconds: 2
+--- !u!114 &8561231465842857318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2725351649771552576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ad6e11fb0cf554fb3a29b67c56e9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  colorRenderers:
+  - {fileID: 2207873813721471637}
 --- !u!114 &5459787427900466961 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1903265317656121782, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}

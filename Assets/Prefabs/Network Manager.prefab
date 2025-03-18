@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2490543546649994879}
   - component: {fileID: 6646478457932007284}
   - component: {fileID: 5179318445922132274}
+  - component: {fileID: -1945338067960207121}
   m_Layer: 0
   m_Name: Network Manager
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   - {fileID: 2725351649771552576, guid: c7a253fb1aef29a4e925d597f9751480, type: 3}
   unitSpawnerPrefab: {fileID: 2725351649771552576, guid: 8398b56eee5796c4e9a653c894ef22f4, type: 3}
   gameOverHandler: {fileID: 1105571658637315080, guid: b880c38c5fa0a364d891b814ebc439fb, type: 3}
+  teamColors: {fileID: -1945338067960207121}
 --- !u!114 &6646478457932007284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,3 +113,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetX: 0
   offsetY: 0
+--- !u!114 &-1945338067960207121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3876164310928022993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c09458fef9b993847b017824455034fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teamColors:
+  - {r: 0, g: 0.8396226, b: 0.51054525, a: 0}
+  - {r: 0.8392157, g: 0.4908827, b: 0, a: 0}
+  - {r: 0.8392157, g: 0, b: 0.43242165, a: 0}
+  - {r: 0, g: 0.38066438, b: 0.8392157, a: 0}
+  - {r: 0.8392157, g: 0.7999833, b: 0, a: 0}
+  - {r: 0.8392157, g: 0.03068999, b: 0, a: 0}

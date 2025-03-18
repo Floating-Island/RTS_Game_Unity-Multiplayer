@@ -2,6 +2,7 @@ using Mirror;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using UnityEngine;
 
 public class RTS_Networked_Player : NetworkBehaviour
@@ -12,6 +13,8 @@ public class RTS_Networked_Player : NetworkBehaviour
     
     [SerializeField]
     private List<Building> buildings = new List<Building>();
+
+    private Color teamColor = new Color();
 
     public List<Unit> GetUnits()
     {
@@ -44,6 +47,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     {
         return gameObject.connectionToClient.identity.GetComponent<RTS_Networked_Player>();
     }
+
     public override void OnStartServer()
     {
         base.OnStartServer();
@@ -68,6 +72,18 @@ public class RTS_Networked_Player : NetworkBehaviour
         {
             buildings.Remove(building);
         }
+    }
+
+    [Server]
+    public void SetTeamColor(Color newTeamColor)
+    {
+        teamColor = newTeamColor;
+    }
+
+    [Server]
+    public Color GetTeamColor()
+    {
+        return teamColor;
     }
 
     [Command]

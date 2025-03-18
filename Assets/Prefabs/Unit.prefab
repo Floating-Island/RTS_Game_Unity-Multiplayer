@@ -170,6 +170,7 @@ GameObject:
   - component: {fileID: 3108122829900449347}
   - component: {fileID: 1424651435352772756}
   - component: {fileID: 9058816718798516317}
+  - component: {fileID: 4695937867353083197}
   m_Layer: 8
   m_Name: Unit
   m_TagString: Untagged
@@ -262,6 +263,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
+  buildingFactory: {fileID: 0}
+  resourceStorage: {fileID: 0}
+  buildings: []
 --- !u!195 &1613184995660580874
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -369,6 +373,7 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   health: {fileID: 1424651435352772756}
+  cost: 20
 --- !u!114 &2559180496831335299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +454,22 @@ MonoBehaviour:
   healthBarCanvas: {fileID: 6399856000772246782}
   healthBarFill: {fileID: 3485783470264782759}
   deactivateDelay: 0.8
+--- !u!114 &4695937867353083197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9025136841884947699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ad6e11fb0cf554fb3a29b67c56e9ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  syncMode: 0
+  syncInterval: 0.1
+  colorRenderers:
+  - {fileID: 3584851056530501080}
 --- !u!1001 &926002905057020119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -659,5 +680,10 @@ PrefabInstance:
 --- !u!4 &2446826609012954807 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4408622496c200747a25a0de4de41dc2, type: 3}
+  m_PrefabInstance: {fileID: 2773767306064277852}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &3584851056530501080 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -7511558181221131132, guid: 4408622496c200747a25a0de4de41dc2, type: 3}
   m_PrefabInstance: {fileID: 2773767306064277852}
   m_PrefabAsset: {fileID: 0}
