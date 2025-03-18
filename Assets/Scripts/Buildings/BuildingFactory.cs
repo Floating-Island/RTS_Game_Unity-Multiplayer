@@ -55,7 +55,7 @@ public class BuildingFactory : NetworkBehaviour
         bool inRange = false;
 
         RTS_Networked_Player player = null;
-        // used by client and server so it needs to resolve which player to call.
+        // This method is used by client and server so it needs to resolve which networked player method to call.
         if (isServer)
         {
             player = RTS_Networked_Player.ServerNetworkedPlayer(this);
