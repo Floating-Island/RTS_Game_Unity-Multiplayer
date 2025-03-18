@@ -313,6 +313,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 9106447590109574519, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
+      propertyPath: aimAtPoint
+      value: 
+      objectReference: {fileID: 3884267178851978603}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -329,9 +333,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8394334665480604135, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
       insertIndex: -1
       addedObject: {fileID: -3408681369183128174}
-    - targetCorrespondingSourceObject: {fileID: 8394334665480604135, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 5488501853726957231}
     - targetCorrespondingSourceObject: {fileID: 8394334665480604135, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
       insertIndex: -1
       addedObject: {fileID: 699538648694264466}
@@ -356,21 +357,6 @@ MonoBehaviour:
   syncMode: 0
   syncInterval: 0.1
   health: {fileID: 5459787427900466961}
---- !u!114 &5488501853726957231
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2725351649771552576}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 479dfb04b4964084a91ee156b7e7dd2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  syncMode: 0
-  syncInterval: 0.1
-  aimAtPoint: {fileID: 3884267178851978603}
 --- !u!114 &699538648694264466
 MonoBehaviour:
   m_ObjectHideFlags: 0
