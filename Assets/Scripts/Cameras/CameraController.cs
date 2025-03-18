@@ -54,7 +54,7 @@ public class CameraController : NetworkBehaviour
 
         if (previousInput == Vector2.zero)
         {
-            currentPosition += UpdatePositionFromMouse() * moveAcceleration;
+            //currentPosition += UpdatePositionFromMouse() * moveAcceleration;
         }
         else
         {
