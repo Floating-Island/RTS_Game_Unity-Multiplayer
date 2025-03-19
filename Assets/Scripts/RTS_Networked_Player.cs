@@ -7,6 +7,7 @@ using UnityEngine;
 
 public class RTS_Networked_Player : NetworkBehaviour
 {
+    [SerializeField] private Transform cameraTransform = null;
     [SerializeField] private BuildingFactory buildingFactory = null;
     [SerializeField] private ResourceStorage resourceStorage = null;
     private List<Unit> units = new List<Unit>();
@@ -162,5 +163,10 @@ public class RTS_Networked_Player : NetworkBehaviour
         if (!isClientOnly || !hasAuthority) { return; }
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;
+    }
+
+    public Transform GetCameraTransform()
+    {
+        return cameraTransform;
     }
 }
