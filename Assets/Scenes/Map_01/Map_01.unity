@@ -540,6 +540,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: MinimapDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 6188354726940076233, guid: 7575cbcdda583bb4c80eb0c90df95944, type: 3}
+      propertyPath: mapScale
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 6188354726940076233, guid: 7575cbcdda583bb4c80eb0c90df95944, type: 3}
+      propertyPath: cameraOffset
+      value: -6
+      objectReference: {fileID: 0}
     - target: {fileID: 9080238552074627987, guid: 7575cbcdda583bb4c80eb0c90df95944, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1488,6 +1496,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5594745151036533492, guid: ac2c39974424c64488fda04b0b09bbe7, type: 3}
+      propertyPath: building
+      value: 
+      objectReference: {fileID: 8868802143919219558, guid: e1f2f772a7ef16c459da961a172691f7, type: 3}
     - target: {fileID: 5703796555293602564, guid: ac2c39974424c64488fda04b0b09bbe7, type: 3}
       propertyPath: m_Name
       value: BuildingsDisplay
