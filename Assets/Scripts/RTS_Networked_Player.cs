@@ -15,7 +15,11 @@ public class RTS_Networked_Player : NetworkBehaviour
     [SerializeField]
     private List<Building> buildings = new List<Building>();
 
+    [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
+    private bool partyOwner = false;
     private Color teamColor = new Color();
+
+    public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
 
     public List<Unit> GetUnits()
     {
@@ -35,6 +39,17 @@ public class RTS_Networked_Player : NetworkBehaviour
     public ResourceStorage GetResourceStorage()
     {
         return resourceStorage;
+    }
+
+    public bool IsPartyOwner()
+    {
+        return partyOwner;
+    }
+
+    [Server]
+    public void SetAsPartyOwner()
+    {
+        partyOwner = true;
     }
 
     [Client]
@@ -158,9 +173,38 @@ public class RTS_Networked_Player : NetworkBehaviour
         buildings.Add(building);
     }
 
+    private void AuthorityHandlePartyOwnerStateUpdated(bool oldState, bool newState)
+    {
+        if (!hasAuthority) { return; }
+        AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
+    }
+
+    [Command]
+    public void CmdStartGame()
+    {
+        if (!partyOwner) { return; }
+
+        RTS_NetworkManager networkManager = (RTS_NetworkManager)NetworkManager.singleton;
+        networkManager.StartGame();
+    }
+
+    public override void OnStartClient()
+    {
+        if (NetworkServer.active) { return; }
+
+        RTS_NetworkManager networkManager = (RTS_NetworkManager)NetworkManager.singleton;
+        networkManager.AddPlayerToList(this);
+    }
+
     public override void OnStopClient()
     {
-        if (!isClientOnly || !hasAuthority) { return; }
+        if (!isClientOnly) { return; }
+
+        RTS_NetworkManager networkManager = (RTS_NetworkManager)NetworkManager.singleton;
+        networkManager.RemovePlayerFromList(this);
+
+        if(!hasAuthority) { return; }
+
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;
     }
