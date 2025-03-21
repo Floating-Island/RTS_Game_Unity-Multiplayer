@@ -96,8 +96,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3355508217161194733, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: _assetId
+      value: 423961124
+      objectReference: {fileID: 0}
+    - target: {fileID: -3355508217161194733, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
       propertyPath: m_AssetId
       value: e00122b55b7151542ab78143caec91eb
+      objectReference: {fileID: 0}
+    - target: {fileID: 625939496546467867, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: syncInterval
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 625939496546467867, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: syncDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1424651435352772756, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
       propertyPath: maxHealth
@@ -259,7 +271,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SmallUnit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4811377375330671055, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2803482624529711787, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}

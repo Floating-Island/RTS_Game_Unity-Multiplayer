@@ -9,7 +9,7 @@ public class Targetable : NetworkBehaviour
     public bool CanBeTargeted()
     {
         // If the object is not ours, it can be targeted
-        return !hasAuthority;
+        return !netIdentity.isOwned;
     }
 
     public Transform GetAimAtPoint()

@@ -38,7 +38,7 @@ public class Targeter : NetworkBehaviour
     [Server]
     public void ClearTarget()
     {
-        if(hasAuthority)
+        if(netIdentity.isOwned)
         {
             target = null;
         }

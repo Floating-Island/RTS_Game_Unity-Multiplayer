@@ -53,6 +53,10 @@ PrefabInstance:
       value: BigProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 5186782395533971523, guid: 70a06e405b73f364bb8f19e4aef9fd0f, type: 3}
+      propertyPath: _assetId
+      value: 2379975853
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186782395533971523, guid: 70a06e405b73f364bb8f19e4aef9fd0f, type: 3}
       propertyPath: m_AssetId
       value: 3fc55db1dec355d46b865e05b48994e2
       objectReference: {fileID: 0}

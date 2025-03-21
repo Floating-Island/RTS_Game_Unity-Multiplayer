@@ -141,7 +141,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     [ClientRpc]
     private void AddToClientSide(Unit aUnit)
     {
-        if(hasAuthority && isClientOnly)
+        if(netIdentity.isOwned && isClientOnly)
         {
             units.Add(aUnit);
         }
@@ -169,7 +169,7 @@ public class RTS_Networked_Player : NetworkBehaviour
     [ClientRpc]
     private void RemoveFromClientSide(Unit aUnit)
     {
-        if(hasAuthority && isClientOnly)
+        if(netIdentity.isOwned && isClientOnly)
         {
             units.Remove(aUnit);
         }
@@ -194,7 +194,7 @@ public class RTS_Networked_Player : NetworkBehaviour
 
     private void AuthorityHandlePartyOwnerStateUpdated(bool oldState, bool newState)
     {
-        if (!hasAuthority) { return; }
+        if (!netIdentity.isOwned) { return; }
         AuthorityOnPartyOwnerStateUpdated?.Invoke(newState);
     }
 
@@ -226,7 +226,7 @@ public class RTS_Networked_Player : NetworkBehaviour
         RTS_NetworkManager networkManager = (RTS_NetworkManager)NetworkManager.singleton;
         networkManager.RemovePlayerFromList(this);
 
-        if(!hasAuthority) { return; }
+        if(!netIdentity.isOwned) { return; }
 
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;

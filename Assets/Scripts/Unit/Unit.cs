@@ -69,14 +69,14 @@ public class Unit : NetworkBehaviour
 
     public override void OnStopClient()
     {
-        if(!hasAuthority) { return; }
+        if(!netIdentity.isOwned) { return; }
         AuthorityOnUnitDespawned?.Invoke(this);
     }
 
     [Client]
     public void Select()
     {
-        if(hasAuthority)
+        if(netIdentity.isOwned)
         {
             onSelected?.Invoke();
         }
@@ -85,7 +85,7 @@ public class Unit : NetworkBehaviour
     [Client]
     public void Deselect()
     {
-        if(hasAuthority)
+        if(netIdentity.isOwned)
         {
             onDeselected?.Invoke();
         }

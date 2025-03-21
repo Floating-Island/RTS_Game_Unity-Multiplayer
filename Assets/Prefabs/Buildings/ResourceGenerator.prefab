@@ -282,6 +282,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141344502910724833, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
+      propertyPath: _assetId
+      value: 4190574852
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141344502910724833, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
       propertyPath: m_AssetId
       value: c7a253fb1aef29a4e925d597f9751480
       objectReference: {fileID: 0}
@@ -370,6 +374,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 721982f32bce39447b6036f319967b37, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   health: {fileID: 5459787427900466961}
@@ -387,6 +392,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ad6e11fb0cf554fb3a29b67c56e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   colorRenderers:

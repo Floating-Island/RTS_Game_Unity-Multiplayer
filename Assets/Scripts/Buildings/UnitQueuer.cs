@@ -99,7 +99,7 @@ public class UnitQueuer : NetworkBehaviour, IPointerClickHandler
 
     void IPointerClickHandler.OnPointerClick(PointerEventData eventData)
     {
-        if(hasAuthority && eventData.button == PointerEventData.InputButton.Right)
+        if(netIdentity.isOwned && eventData.button == PointerEventData.InputButton.Right)
         {
             AddUnitToQueue();
         }

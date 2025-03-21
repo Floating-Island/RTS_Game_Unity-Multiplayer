@@ -221,6 +221,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5141344502910724833, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
+      propertyPath: _assetId
+      value: 251676184
+      objectReference: {fileID: 0}
+    - target: {fileID: 5141344502910724833, guid: 8215a69fec02ef449b0e21586a9bd847, type: 3}
       propertyPath: m_AssetId
       value: e3c7d7a4b3f96324c81c8f428d3e6ccd
       objectReference: {fileID: 0}
@@ -291,6 +295,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73a8840e377096546a9e0b8446f25aa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   unitPrefab: {fileID: 7498405168372112558, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
@@ -309,6 +314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baef478d0b2230e41bde0ba07d1ed48e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   health: {fileID: 5459787427900466961}
@@ -329,6 +335,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74ad6e11fb0cf554fb3a29b67c56e9ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  syncDirection: 0
   syncMode: 0
   syncInterval: 0.1
   colorRenderers:

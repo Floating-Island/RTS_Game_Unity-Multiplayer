@@ -96,6 +96,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -3355508217161194733, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: _assetId
+      value: 1234182974
+      objectReference: {fileID: 0}
+    - target: {fileID: -3355508217161194733, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
       propertyPath: m_AssetId
       value: 4cb6c165c00296b4a800c438f12256ab
       objectReference: {fileID: 0}
@@ -171,7 +175,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: BigUnit
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4811377375330671055, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2803482624529711787, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}

@@ -39,7 +39,7 @@ public class CameraController : NetworkBehaviour
     [ClientCallback]
     private void Update()
     {
-        if (!hasAuthority) { return; }
+        if (!netIdentity.isOwned) { return; }
 
         if (!Application.isFocused) { return; }
 

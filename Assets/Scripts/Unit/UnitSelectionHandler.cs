@@ -131,7 +131,7 @@ public class UnitSelectionHandler : MonoBehaviour
     {
         if(!selection.collider.TryGetComponent<Unit>(out Unit unit)) { return; }
 
-        if(!unit.hasAuthority) { return; }
+        if(!unit.netIdentity.isOwned) { return; }
 
         selectedUnits.Add(unit);
 
