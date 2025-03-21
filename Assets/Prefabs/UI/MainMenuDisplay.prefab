@@ -258,6 +258,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   landingPagePanel: {fileID: 1409581711374561645}
+  useSteam: 1
 --- !u!1 &1254942839914158634
 GameObject:
   m_ObjectHideFlags: 0
@@ -2463,6 +2464,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbyUI: {fileID: 4548989452679892719}
   startGameButton: {fileID: 9185311555971283200}
+  playerList: []
 --- !u!1 &4935058937180399070
 GameObject:
   m_ObjectHideFlags: 0
