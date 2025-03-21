@@ -7,7 +7,7 @@ public class MainMenu : MonoBehaviour
 {
     [SerializeField] private GameObject landingPagePanel = null;
 
-    [SerializeField] private bool useSteam = false;
+    [SerializeField] private bool useSteam = true;
 
 
     protected Callback<LobbyCreated_t> lobbyCreated;
@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour
     {
         SteamMatchmaking.JoinLobby(callback.m_steamIDLobby);
     }
-    
+
     private void OnLobbyEnter(LobbyEnter_t callback)
     {
         if (NetworkServer.active) { return; }
