@@ -26,7 +26,7 @@ public class Minimap : MonoBehaviour, IPointerDownHandler, IDragHandler
     {
         if (playerCameraTransform != null) { return; }
 
-        if (NetworkClient.connection.identity == null) { return; }
+        if (NetworkClient.connection == null || NetworkClient.connection.identity == null) { return; }
 
         playerCameraTransform = RTS_Networked_Player.ClientNetworkedPlayer().GetCameraTransform();
     }
