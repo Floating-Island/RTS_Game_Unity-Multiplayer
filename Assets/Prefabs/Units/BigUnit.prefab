@@ -171,6 +171,10 @@ PrefabInstance:
       propertyPath: cost
       value: 45
       objectReference: {fileID: 0}
+    - target: {fileID: 8028989813296190474, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: chaseRange
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 9025136841884947699, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
       propertyPath: m_Name
       value: BigUnit
