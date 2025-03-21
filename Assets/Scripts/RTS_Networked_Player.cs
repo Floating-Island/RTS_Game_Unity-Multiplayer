@@ -134,16 +134,6 @@ public class RTS_Networked_Player : NetworkBehaviour
         {
             if (units.Contains(unit)) { return; }
             units.Add(unit);
-            AddToClientSide(unit);
-        }
-    }
-
-    [ClientRpc]
-    private void AddToClientSide(Unit aUnit)
-    {
-        if(netIdentity.isOwned && isClientOnly)
-        {
-            units.Add(aUnit);
         }
     }
 
@@ -162,16 +152,6 @@ public class RTS_Networked_Player : NetworkBehaviour
         if(unit.connectionToClient.connectionId == connectionToClient.connectionId)
         {
             units.Remove(unit);
-            RemoveFromClientSide(unit);
-        }
-    }
-
-    [ClientRpc]
-    private void RemoveFromClientSide(Unit aUnit)
-    {
-        if(netIdentity.isOwned && isClientOnly)
-        {
-            units.Remove(aUnit);
         }
     }
 
@@ -180,6 +160,18 @@ public class RTS_Networked_Player : NetworkBehaviour
         if (NetworkServer.active) { return; }
         Building.AuthorityOnBuildingSpawned += AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned += AuthorityHandleBuildingDespawned;
+        Unit.AuthorityOnUnitSpawned += AuthorityHandleUnitSpawned;
+        Unit.AuthorityOnUnitDespawned += AuthorityHandleUnitDespawned;
+    }
+
+    private void AuthorityHandleUnitSpawned(Unit unit)
+    {
+        units.Add(unit);
+    }
+
+    private void AuthorityHandleUnitDespawned(Unit unit)
+    {
+        units.Remove(unit);
     }
 
     private void AuthorityHandleBuildingDespawned(Building building)
@@ -230,6 +222,8 @@ public class RTS_Networked_Player : NetworkBehaviour
 
         Building.AuthorityOnBuildingSpawned -= AuthorityHandleBuildingSpawned;
         Building.AuthorityOnBuildingDespawned -= AuthorityHandleBuildingDespawned;
+        Unit.AuthorityOnUnitSpawned -= AuthorityHandleUnitSpawned;
+        Unit.AuthorityOnUnitDespawned -= AuthorityHandleUnitDespawned;
     }
 
     public Transform GetCameraTransform()
