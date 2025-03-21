@@ -7,10 +7,10 @@ public class ResourceDisplay : MonoBehaviour
     [SerializeField] private TMP_Text resourcesText = null;
     private RTS_Networked_Player player;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
         StoreNetworkedPlayer();
+        SetupResources();
     }
 
     private void OnDestroy()
@@ -21,17 +21,14 @@ public class ResourceDisplay : MonoBehaviour
 
     private void StoreNetworkedPlayer()
     {
-        if (player == null)
-        {
-            player = RTS_Networked_Player.ClientNetworkedPlayer();
+        player = RTS_Networked_Player.ClientNetworkedPlayer();
+    }
 
-            if (player == null) { return; }
-
-            ResourceStorage resourceStorage = player.GetResourceStorage();
-            resourceStorage.ClientHandleResourcesUpdated += UpdateResourceText;
-            UpdateResourceText(resourceStorage.CurrentResourceAmount());
-        }
-
+    private void SetupResources()
+    {
+        ResourceStorage resourceStorage = player.GetResourceStorage();
+        resourceStorage.ClientHandleResourcesUpdated += UpdateResourceText;
+        UpdateResourceText(resourceStorage.CurrentResourceAmount());
     }
 
     private void UpdateResourceText(int updatedResource)

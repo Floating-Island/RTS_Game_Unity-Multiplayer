@@ -23,6 +23,8 @@ public class UnitSelectionHandler : MonoBehaviour
 
         Unit.AuthorityOnUnitDespawned += DeselectUnit;
         GameOverHandler.ClientOnGameOver += HandleOnGameOver;
+
+        StoreNetworkedPlayer();
     }
 
     private void HandleOnGameOver(int connectionId)
@@ -43,16 +45,11 @@ public class UnitSelectionHandler : MonoBehaviour
 
     private void StoreNetworkedPlayer()
     {
-        if (player == null)
-        {
-            player = RTS_Networked_Player.ClientNetworkedPlayer();
-        }
+        player = RTS_Networked_Player.ClientNetworkedPlayer();
     }
 
     private void Update()
     {
-        StoreNetworkedPlayer();
-
         if (Mouse.current.leftButton.wasPressedThisFrame)
         {
             StartSelectionArea();

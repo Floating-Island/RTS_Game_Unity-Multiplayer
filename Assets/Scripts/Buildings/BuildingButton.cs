@@ -22,20 +22,17 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         mainCamera = Camera.main;
         iconImage.sprite = building.GetIcon();
         priceText.text = building.GetPrice().ToString();
+        StoreNetworkedPlayer();
     }
 
     private void Update()
     {
-        StoreNetworkedPlayer();
         UpdateBuildingPreview();
     }
 
     private void StoreNetworkedPlayer()
     {
-        if (player == null)
-        {
-            player = RTS_Networked_Player.ClientNetworkedPlayer();
-        }
+        player = RTS_Networked_Player.ClientNetworkedPlayer();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -66,8 +63,6 @@ public class BuildingButton : MonoBehaviour, IPointerDownHandler, IPointerUpHand
     [ClientCallback]
     private void UpdateBuildingPreview()
     {
-        if (player == null) { return; }
-
         if (buildingPreviewInstance == null) { return; }
 
         Ray ray = mainCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
