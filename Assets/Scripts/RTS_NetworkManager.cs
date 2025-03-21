@@ -88,6 +88,8 @@ public class RTS_NetworkManager : NetworkManager
         player.SetTeamColor(teamColors.GetColor());
 
         players.Add(player);
+        player.SetDisplayName($"Player {players.Count}");
+
         if (players.Count == 1)
         {
             player.SetAsPartyOwner();

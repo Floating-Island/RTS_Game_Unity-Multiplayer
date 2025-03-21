@@ -17,7 +17,13 @@ public class RTS_Networked_Player : NetworkBehaviour
 
     [SyncVar(hook = nameof(AuthorityHandlePartyOwnerStateUpdated))]
     private bool partyOwner = false;
+
+    [SyncVar(hook = nameof(ClientHandleDisplayNameUpdated))]
+    private string displayName;
+
     private Color teamColor = new Color();
+
+    public static event Action ClientOnInfoUpdated;
 
     public static event Action<bool> AuthorityOnPartyOwnerStateUpdated;
 
@@ -44,6 +50,17 @@ public class RTS_Networked_Player : NetworkBehaviour
     public bool IsPartyOwner()
     {
         return partyOwner;
+    }
+
+    public string GetDisplayName()
+    {
+        return displayName;
+    }
+
+    [Server]
+    public void SetDisplayName(string newName)
+    {
+        displayName = newName;
     }
 
     [Server]
@@ -202,6 +219,8 @@ public class RTS_Networked_Player : NetworkBehaviour
 
     public override void OnStopClient()
     {
+        ClientOnInfoUpdated?.Invoke();
+
         if (!isClientOnly) { return; }
 
         RTS_NetworkManager networkManager = (RTS_NetworkManager)NetworkManager.singleton;
@@ -216,5 +235,10 @@ public class RTS_Networked_Player : NetworkBehaviour
     public Transform GetCameraTransform()
     {
         return cameraTransform;
+    }
+
+    private void ClientHandleDisplayNameUpdated(string oldDisplayName, string newDisplayName)
+    {
+        ClientOnInfoUpdated?.Invoke();
     }
 }
