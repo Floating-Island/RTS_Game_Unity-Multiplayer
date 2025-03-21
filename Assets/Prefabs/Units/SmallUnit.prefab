@@ -251,6 +251,10 @@ PrefabInstance:
       propertyPath: cost
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 8028989813296190474, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
+      propertyPath: chaseRange
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8894061923494944614, guid: 5ef795af277c9d5438ad1b1eaa8239e5, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.37
